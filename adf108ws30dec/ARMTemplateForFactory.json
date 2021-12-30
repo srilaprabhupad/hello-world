@@ -17,24 +17,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/LSAzureDatabricks')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureDatabricks",
-				"typeProperties": {
-					"domain": "https://adb-2237773114645733.13.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('LSAzureDatabricks_accessToken')]"
-					},
-					"existingClusterId": "1230-063611-tg6arpz3"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ADBPipeline')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -53,7 +35,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/lakshmiranjan@gmail.com/nb108-001",
+							"notebookPath": "/adf/nb108-001",
 							"baseParameters": {
 								"input": {
 									"value": "@pipeline().parameters.name",
@@ -81,6 +63,24 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LSAzureDatabricks')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LSAzureDatabricks')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-2237773114645733.13.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('LSAzureDatabricks_accessToken')]"
+					},
+					"existingClusterId": "1230-063611-tg6arpz3"
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }

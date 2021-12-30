@@ -53,7 +53,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/lakshmiranjan@gmail.com/nb108-001",
+							"notebookPath": "/adf/nb108-001",
 							"baseParameters": {
 								"input": {
 									"value": "@pipeline().parameters.name",
